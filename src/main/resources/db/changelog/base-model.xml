@@ -1,0 +1,58 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1707844412276-1" author="holme (generated)">
+        <createTable tableName="users">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="username" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password_hash" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1707844412276-2" author="holme (generated)" context="example-context" labels="example-label">
+        <createTable tableName="users_roles">
+            <column name="user_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1707844412276-3" author="holme (generated)">
+        <addUniqueConstraint columnNames="email" constraintName="uc_users_email" tableName="users"/>
+    </changeSet>
+    <changeSet id="1707844412276-4" author="holme (generated)">
+        <addUniqueConstraint columnNames="username" constraintName="uc_users_username" tableName="users"/>
+    </changeSet>
+    <changeSet id="1707844412276-5" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="users_roles"
+                                 constraintName="fk_users_roles_on_user" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1707844845744-1" author="holme (generated)">
+        <addColumn tableName="users">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1707844845744-5" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="users"
+                                 constraintName="FK_USERS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1707844845744-6" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="users"
+                                 constraintName="FK_USERS_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+</databaseChangeLog>
