@@ -1,0 +1,267 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="1708709744027-1" author="holme (generated)">
+        <createTable tableName="course_subjects">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_course_subjects"/>
+            </column>
+            <column name="course_id" type="INT"/>
+            <column name="subject_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-2" author="holme (generated)">
+        <createTable tableName="course_supper_visors">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_course_supper_visors"/>
+            </column>
+            <column name="supper_visor_user_id" type="INT"/>
+            <column name="course_id" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-3" author="holme (generated)">
+        <createTable tableName="course_trainees">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_course_trainees"/>
+            </column>
+            <column name="trainee_user_id" type="INT"/>
+            <column name="course_id" type="INT"/>
+            <column name="result_status" type="VARCHAR(255)"/>
+            <column name="course_trainee_status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-4" author="holme (generated)">
+        <createTable tableName="courses">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_courses"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="start_date" type="DATETIME"/>
+            <column name="finish_date" type="DATETIME"/>
+            <column name="status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-5" author="holme (generated)">
+        <createTable tableName="subjects">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_subjects"/>
+            </column>
+            <column name="name" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-6" author="holme (generated)">
+        <createTable tableName="tasks">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_tasks"/>
+            </column>
+            <column name="user_subject_id" type="INT"/>
+            <column name="start_time" type="DATETIME"/>
+            <column name="finish_time" type="DATETIME"/>
+            <column name="task_status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-7" author="holme (generated)">
+        <createTable tableName="user_subjects">
+            <column autoIncrement="true" name="id" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_user_subjects"/>
+            </column>
+            <column name="course_trainee_id" type="INT"/>
+            <column name="subject_id" type="INT"/>
+            <column name="start_time" type="DATETIME"/>
+            <column name="finish_time" type="DATETIME"/>
+            <column name="trainee_subject_status" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1708709744027-8" author="holme (generated)">
+        <addColumn tableName="users">
+            <column name="address" type="VARCHAR(255)"/>
+            <column name="full_name" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709744027-11" author="holme (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_courses_name" tableName="courses"/>
+    </changeSet>
+    <changeSet id="1708709744027-12" author="holme (generated)">
+        <addUniqueConstraint columnNames="name" constraintName="uc_subjects_name" tableName="subjects"/>
+    </changeSet>
+    <changeSet id="1708709744027-13" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_subjects"
+                                 constraintName="FK_COURSE_SUBJECTS_ON_COURSE" referencedColumnNames="id"
+                                 referencedTableName="courses"/>
+    </changeSet>
+    <changeSet id="1708709744027-14" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="subject_id" baseTableName="course_subjects"
+                                 constraintName="FK_COURSE_SUBJECTS_ON_SUBJECT" referencedColumnNames="id"
+                                 referencedTableName="subjects"/>
+    </changeSet>
+    <changeSet id="1708709744027-15" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_supper_visors"
+                                 constraintName="FK_COURSE_SUPPER_VISORS_ON_COURSE" referencedColumnNames="id"
+                                 referencedTableName="courses"/>
+    </changeSet>
+    <changeSet id="1708709744027-16" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="supper_visor_user_id" baseTableName="course_supper_visors"
+                                 constraintName="FK_COURSE_SUPPER_VISORS_ON_SUPPER_VISOR_USER"
+                                 referencedColumnNames="id" referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709744027-17" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="course_id" baseTableName="course_trainees"
+                                 constraintName="FK_COURSE_TRAINEES_ON_COURSE" referencedColumnNames="id"
+                                 referencedTableName="courses"/>
+    </changeSet>
+    <changeSet id="1708709744027-18" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="trainee_user_id" baseTableName="course_trainees"
+                                 constraintName="FK_COURSE_TRAINEES_ON_TRAINEE_USER" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709744027-19" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="user_subject_id" baseTableName="tasks"
+                                 constraintName="FK_TASKS_ON_USER_SUBJECT" referencedColumnNames="id"
+                                 referencedTableName="user_subjects"/>
+    </changeSet>
+    <changeSet id="1708709744027-20" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="course_trainee_id" baseTableName="user_subjects"
+                                 constraintName="FK_USER_SUBJECTS_ON_COURSE_TRAINEE" referencedColumnNames="id"
+                                 referencedTableName="course_trainees"/>
+    </changeSet>
+    <changeSet id="1708709744027-21" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="subject_id" baseTableName="user_subjects"
+                                 constraintName="FK_USER_SUBJECTS_ON_SUBJECT" referencedColumnNames="id"
+                                 referencedTableName="subjects"/>
+    </changeSet>
+    <changeSet id="1708709954754-1" author="holme (generated)">
+        <addColumn tableName="course_subjects">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-2" author="holme (generated)">
+        <addColumn tableName="course_supper_visors">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-3" author="holme (generated)">
+        <addColumn tableName="course_trainees">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-4" author="holme (generated)">
+        <addColumn tableName="courses">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-5" author="holme (generated)">
+        <addColumn tableName="subjects">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-6" author="holme (generated)">
+        <addColumn tableName="tasks">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-7" author="holme (generated)">
+        <addColumn tableName="user_subjects">
+            <column name="created_at" type="DATETIME"/>
+            <column name="created_by" type="INT"/>
+            <column name="updated_at" type="DATETIME"/>
+            <column name="updated_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708709954754-29" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="courses"
+                                 constraintName="FK_COURSES_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-30" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="courses"
+                                 constraintName="FK_COURSES_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-31" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="course_subjects"
+                                 constraintName="FK_COURSE_SUBJECTS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-32" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="course_subjects"
+                                 constraintName="FK_COURSE_SUBJECTS_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-33" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="course_supper_visors"
+                                 constraintName="FK_COURSE_SUPPER_VISORS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-34" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="course_supper_visors"
+                                 constraintName="FK_COURSE_SUPPER_VISORS_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-35" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="course_trainees"
+                                 constraintName="FK_COURSE_TRAINEES_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-36" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="course_trainees"
+                                 constraintName="FK_COURSE_TRAINEES_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-37" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="subjects"
+                                 constraintName="FK_SUBJECTS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-38" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="subjects"
+                                 constraintName="FK_SUBJECTS_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-39" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="tasks"
+                                 constraintName="FK_TASKS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-40" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="tasks"
+                                 constraintName="FK_TASKS_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-41" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="user_subjects"
+                                 constraintName="FK_USER_SUBJECTS_ON_CREATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708709954754-42" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="updated_by" baseTableName="user_subjects"
+                                 constraintName="FK_USER_SUBJECTS_ON_UPDATED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+</databaseChangeLog>
