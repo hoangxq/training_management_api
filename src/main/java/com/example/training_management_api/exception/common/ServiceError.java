@@ -21,6 +21,9 @@ public enum ServiceError {
     CMN_HTTP_METHOD_NOT_SUPPORT(405, "err.api.http-method-not-support"),
     CMN_MEDIA_TYPE_NOT_SUPPORT(415, "err.api.media-type-not-support"),
     ENDPOINT_NOT_FOUND(404, "err.api.endpoint-not-found"),
+
+    CURRENT_USER_NOT_FOUND(500,"err.sys.current-user-not-found"),
+
     UNEXPECTED_EXCEPTION(500, "err.sys.unexpected-exception");
 
     ServiceError(int errCode, String messageKey) {
@@ -28,7 +31,7 @@ public enum ServiceError {
         this.messageKey = messageKey;
     }
 
-    private static final Map<String, ServiceError> ERROR_MAP= new HashMap<>();
+    private static final Map<String, ServiceError> ERROR_MAP = new HashMap<>();
 
     static {
         for (ServiceError e : values()) {

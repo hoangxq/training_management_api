@@ -264,4 +264,92 @@
                                  constraintName="FK_USER_SUBJECTS_ON_UPDATED_BY" referencedColumnNames="id"
                                  referencedTableName="users"/>
     </changeSet>
+    <changeSet id="1708790283272-1" author="holme (generated)">
+        <addColumn tableName="course_subjects">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-2" author="holme (generated)">
+        <addColumn tableName="course_supper_visors">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-3" author="holme (generated)">
+        <addColumn tableName="course_trainees">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-4" author="holme (generated)">
+        <addColumn tableName="courses">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-5" author="holme (generated)">
+        <addColumn tableName="subjects">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-6" author="holme (generated)">
+        <addColumn tableName="tasks">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-7" author="holme (generated)">
+        <addColumn tableName="user_subjects">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-8" author="holme (generated)">
+        <addColumn tableName="users">
+            <column name="deleted_at" type="DATETIME"/>
+            <column name="deleted_by" type="INT"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="1708790283272-17" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="courses"
+                                 constraintName="FK_COURSES_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-18" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="course_subjects"
+                                 constraintName="FK_COURSE_SUBJECTS_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-19" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="course_supper_visors"
+                                 constraintName="FK_COURSE_SUPPER_VISORS_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-20" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="course_trainees"
+                                 constraintName="FK_COURSE_TRAINEES_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-21" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="subjects"
+                                 constraintName="FK_SUBJECTS_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-22" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="tasks"
+                                 constraintName="FK_TASKS_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-23" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="users"
+                                 constraintName="FK_USERS_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
+    <changeSet id="1708790283272-24" author="holme (generated)">
+        <addForeignKeyConstraint baseColumnNames="deleted_by" baseTableName="user_subjects"
+                                 constraintName="FK_USER_SUBJECTS_ON_DELETED_BY" referencedColumnNames="id"
+                                 referencedTableName="users"/>
+    </changeSet>
 </databaseChangeLog>
